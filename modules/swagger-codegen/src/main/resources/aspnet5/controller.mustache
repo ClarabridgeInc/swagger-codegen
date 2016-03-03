@@ -42,7 +42,7 @@ namespace {{packageName}}.Controllers
             */
             {{#returnType}}
             var result = default({{&returnType}});{{/returnType}}
-            {{operationId}}_Implementation({{#allParams}}{{>implCallerParam}}{{#hasMore}}, {{/hasMore}}{{^hasMore}}{{#returnType}}, {{/returnType}}{{/hasMore}}{{/allParams}}{{#returnType}}ref {{&returnType}} result{{/returnType}});{{#returnType}}
+            {{operationId}}_Implementation({{#allParams}}{{>implCallerParam}}{{#hasMore}}, {{/hasMore}}{{^hasMore}}{{#returnType}}, {{/returnType}}{{/hasMore}}{{/allParams}}{{#returnType}}ref result{{/returnType}});{{#returnType}}
             return new ObjectResult(result);{{/returnType}}
         }
         
