@@ -41,14 +41,12 @@ namespace {{packageName}}.Controllers
             throw new NotImplementedException();{{/returnType}}
             */
             {{#returnType}}
-            var result = default({{&returnType}});
-            {{operationId}}_Implementation({{#allParams}}{{>callingParam}}{{#hasMore}}, {{/hasMore}}{{/allParams}}, ref {{&returnType}} result);
-            return new ObjectResult(result);{{/returnType}}{{^returnType}}
-            {{operationId}}_Implementation({{#allParams}}{{>callingParam}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
-            {{/returnType}}
+            var result = default({{&returnType}});{{/returnType}}
+            {{operationId}}_Implementation({{#allParams}}{{>implCallerParam}}{{#hasMore}}, {{/hasMore}}{{^hasMore}}{{#returnType}}, {{/returnType}}{{/hasMore}}{{/allParams}}{{#returnType}}ref {{&returnType}} result{{/returnType}});{{#returnType}}
+            return new ObjectResult(result);{{/returnType}}
         }
         
-        partial void {{operationId}}_Implementation({{#allParams}}{{>pathParam}}{{>queryParam}}{{>bodyParam}}{{>formParam}}{{>headerParam}}{{#hasMore}}, {{/hasMore}}{{/allParams}}{{#returnType}}, ref {{&returnType}} result{{/returnType}});
+        partial void {{operationId}}_Implementation({{#allParams}}{{>implCalleeParam}}{{#hasMore}}, {{/hasMore}}{{^hasMore}}{{#returnType}}, {{/returnType}}{{/hasMore}}{{/allParams}}{{#returnType}}ref {{&returnType}} result{{/returnType}});
 {{/operation}}
     }
 {{/operations}}
