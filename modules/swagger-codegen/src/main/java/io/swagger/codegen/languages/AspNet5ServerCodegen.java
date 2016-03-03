@@ -19,8 +19,8 @@ public class AspNet5ServerCodegen extends AbstractCSharpCodegen {
 
         outputFolder = "generated-code" + File.separator + this.getName();
 
-        modelTemplateFiles.put("model.mustache", ".cs");
-        apiTemplateFiles.put("controller.mustache", ".cs");
+        modelTemplateFiles.put("model.mustache", ".gen.cs");
+        apiTemplateFiles.put("controller.mustache", ".gen.cs");
 
         // contextually reserved words
         setReservedWordsLowerCase(
