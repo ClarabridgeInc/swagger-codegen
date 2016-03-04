@@ -14,10 +14,10 @@ using {{modelPackage}};
 namespace {{packageName}}.Controllers
 { {{#operations}}
     /// <summary>
-    /// {{description}}
-    /// </summary>{{#description}}{{#basePath}}
-    [Route("{{basePath}}")]
-    {{/basePath}}[Description("{{description}}")]{{/description}}
+    /// {{title}}
+    /// </summary>{{#basePath}}
+    [Route("{{basePath}}")]{{/basePath}}{{#description}}
+    [Description("{{description}}")]{{/description}}
     public partial class {{classname}}Controller : Controller
     { {{#operation}}
 
