@@ -218,14 +218,22 @@ public class PerlClientCodegen extends DefaultCodegen implements CodegenConfig {
 
     @Override
     public String toModelName(String name) {
+        name = sanitizeName(name); // FIXME: a parameter should not be assigned. Also declare the methods parameters as 'final'.
+
         // model name cannot use reserved keyword
         if (isReservedWord(name)) {
-            LOGGER.warn(name + " (reserved word) cannot be used as model name. Renamed to " + camelize("object_" + name));
-            name = "object_" + name;
+            LOGGER.warn(name + " (reserved word) cannot be used as model name. Renamed to " + camelize("model_" + name));
+            name = "model_" + name;
         }
 
         // add prefix/suffic to model name
-        name = modelNamePrefix + name + modelNameSuffix;
+        if (!StringUtils.isEmpty(modelNamePrefix)) {
+            name = modelNamePrefix + "_" + name;
+        }
+
+        if (!StringUtils.isEmpty(modelNameSuffix)) {
+            name = name + "_" + modelNameSuffix;
+        }
 
         // camelize the model name
         // phone_number => PhoneNumber

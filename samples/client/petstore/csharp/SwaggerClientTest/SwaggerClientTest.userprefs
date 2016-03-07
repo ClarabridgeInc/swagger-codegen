@@ -1,24 +1,14 @@
-<Properties StartupItem="SwaggerClientTest.csproj">
+﻿<Properties StartupItem="SwaggerClientTest.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="TestPet.cs">
     <Files>
-      <File FileName="TestPet.cs" Line="162" Column="35" />
-      <File FileName="TestOrder.cs" Line="42" Column="12" />
+      <File FileName="TestPet.cs" Line="189" Column="4" />
+      <File FileName="TestOrder.cs" Line="88" Column="47" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.NUnit.TestPad">
         <State name="__root__">
-          <Node name="SwaggerClientTest" expanded="True">
-            <Node name="SwaggerClientTest" expanded="True">
-              <Node name="SwaggerClient" expanded="True">
-                <Node name="TestPet" expanded="True">
-                  <Node name="TestPet" expanded="True">
-                    <Node name="TestEqual" selected="True" />
-                  </Node>
-                </Node>
-              </Node>
-            </Node>
-          </Node>
+          <Node name="SwaggerClientTest" expanded="True" />
         </State>
       </Pad>
     </Pads>

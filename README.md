@@ -72,7 +72,7 @@ Swagger Codegen Version    | Release Date | OpenAPI Spec compatibility | Notes
 If you're looking for the latest stable version, you can grab it directly from maven central (you'll need java 7 runtime at a minimum):
 
 ```
-wget http://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.1.5/swagger-codegen-cli-2.1.5.jar -o swagger-codegen-cli.jar
+wget http://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.1.5/swagger-codegen-cli-2.1.5.jar -O swagger-codegen-cli.jar
 
 java -jar swagger-codegen-cli.jar help
 ```
@@ -708,6 +708,7 @@ Here are some companies/projects using Swagger Codegen in production. To add you
 - [Activehours](https://www.activehours.com/)
 - [Acunetix](https://www.acunetix.com/)
 - [Atlassian](https://www.atlassian.com/)
+- [CloudBoost](https://www.CloudBoost.io/)
 - [Cupix](http://www.cupix.com)
 - [DocuSign](https://www.docusign.com)
 - [Ergon](http://www.ergon.ch/)
@@ -723,6 +724,7 @@ Here are some companies/projects using Swagger Codegen in production. To add you
 - [Royal Bank of Canada (RBC)](http://www.rbc.com/canada.html)
 - [SmartRecruiters](https://www.smartrecruiters.com/)
 - [StyleRecipe](http://stylerecipe.co.jp)
+- [Svenska Spel AB](https://www.svenskaspel.se/)
 - [ThoughtWorks](https://www.thoughtworks.com)
 - [uShip](https://www.uship.com/)
 - [Zalando](https://tech.zalando.com)

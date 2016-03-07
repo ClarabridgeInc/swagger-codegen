@@ -86,6 +86,7 @@ public class RubyClientCodegen extends DefaultCodegen implements CodegenConfig {
         languageSpecificPrimitives.add("Array");
         languageSpecificPrimitives.add("Hash");
         languageSpecificPrimitives.add("File");
+        languageSpecificPrimitives.add("Object");
 
         typeMapping.put("string", "String");
         typeMapping.put("char", "String");
@@ -380,7 +381,7 @@ public class RubyClientCodegen extends DefaultCodegen implements CodegenConfig {
 
         // model name cannot use reserved keyword, e.g. return
         if (isReservedWord(name)) {
-            String modelName = camelize("object_" + name);
+            String modelName = camelize("Model" + name);
             LOGGER.warn(name + " (reserved word) cannot be used as model name. Renamed to " + modelName);
             return modelName;
         }
@@ -403,7 +404,7 @@ public class RubyClientCodegen extends DefaultCodegen implements CodegenConfig {
         }
         // model name cannot use reserved keyword, e.g. return
         if (isReservedWord(name)) {
-            String filename = underscore("object_" + name);
+            String filename = underscore("model_" + name);
             LOGGER.warn(name + " (reserved word) cannot be used as model filename. Renamed to " + filename);
             return filename;
         }
@@ -458,11 +459,6 @@ public class RubyClientCodegen extends DefaultCodegen implements CodegenConfig {
         }
 
         return underscore(sanitizeName(operationId));
-    }
-
-    @Override
-    public String toModelImport(String name) {
-        return gemName + "/" + modelPackage() + "/" + toModelFilename(name);
     }
 
     @Override

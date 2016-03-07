@@ -157,6 +157,7 @@ public class JavascriptClientCodegen extends DefaultCodegen implements CodegenCo
         typeMapping.put("number", "Number");
         typeMapping.put("DateTime", "Date");
         typeMapping.put("Date", "Date");
+        typeMapping.put("file", "File");
         // binary not supported in JavaScript client right now, using String as a workaround
         typeMapping.put("binary", "String");
 
@@ -293,13 +294,21 @@ public class JavascriptClientCodegen extends DefaultCodegen implements CodegenCo
     public String toModelName(String name) {
         name = sanitizeName(name);  // FIXME parameter should not be assigned. Also declare it as "final"
 
+        if (!StringUtils.isEmpty(modelNamePrefix)) {
+            name = modelNamePrefix + "_" + name;
+        }
+
+        if (!StringUtils.isEmpty(modelNameSuffix)) {
+            name = name + "_" + modelNameSuffix;
+        }
+
         // camelize the model name
         // phone_number => PhoneNumber
         name = camelize(name);
 
         // model name cannot use reserved keyword, e.g. return
         if (isReservedWord(name)) {
-            String modelName = "Object" + name;
+            String modelName = "Model" + name;
             LOGGER.warn(name + " (reserved word) cannot be used as model name. Renamed to " + modelName);
             return modelName;
         }
@@ -315,7 +324,7 @@ public class JavascriptClientCodegen extends DefaultCodegen implements CodegenCo
 
     @Override
     public String toModelImport(String name) {
-        return toModelName(name);
+        return name;
     }
 
     @Override

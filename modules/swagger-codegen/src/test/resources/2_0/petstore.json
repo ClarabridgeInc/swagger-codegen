@@ -353,6 +353,35 @@
                 "name": {
                   "type": "string",
                   "example": "doggie"
+                },
+                "photoUrls": {
+                    "type": "array",
+                    "xml": {
+                        "name": "photoUrl",
+                        "wrapped": true
+                    },
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "xml": {
+                        "name": "tag",
+                        "wrapped": true
+                    },
+                    "items": {
+                        "$ref": "#/definitions/Tag"
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "pet status in the store",
+                    "enum": [
+                        "available",
+                    "pending",
+                    "sold"
+                        ]
                 }
               }
             }
@@ -1250,6 +1279,28 @@
       },
       "xml": {
         "name": "Order"
+      }
+    },
+    "$special[model.name]": {
+      "properties": {
+        "$special[property.name]": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "xml": {
+        "name": "$special[model.name]"
+      }
+    },
+    "Return": {
+      "properties": {
+        "return": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "xml": {
+        "name": "Return"
       }
     }
   }

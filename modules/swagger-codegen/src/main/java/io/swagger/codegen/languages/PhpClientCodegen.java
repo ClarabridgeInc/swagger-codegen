@@ -101,7 +101,7 @@ public class PhpClientCodegen extends DefaultCodegen implements CodegenConfig {
         typeMapping.put("array", "array");
         typeMapping.put("list", "array");
         typeMapping.put("object", "object");
-        typeMapping.put("binary", "ByteArray");
+        typeMapping.put("binary", "string");
 
         cliOptions.add(new CliOption(CodegenConstants.MODEL_PACKAGE, CodegenConstants.MODEL_PACKAGE_DESC));
         cliOptions.add(new CliOption(CodegenConstants.API_PACKAGE, CodegenConstants.API_PACKAGE_DESC));
@@ -358,6 +358,9 @@ public class PhpClientCodegen extends DefaultCodegen implements CodegenConfig {
 
     @Override
     public String toModelName(String name) {
+        // remove [ 
+        name = name.replaceAll("\\]", "");
+
         // Note: backslash ("\\") is allowed for e.g. "\\DateTime"
         name = name.replaceAll("[^\\w\\\\]+", "_"); // FIXME: a parameter should not be assigned. Also declare the methods parameters as 'final'.
 
@@ -366,8 +369,8 @@ public class PhpClientCodegen extends DefaultCodegen implements CodegenConfig {
 
         // model name cannot use reserved keyword
         if (isReservedWord(name)) {
-            LOGGER.warn(name + " (reserved word) cannot be used as model name. Renamed to " + camelize("object_" + name));
-            name = "object_" + name; // e.g. return => ObjectReturn (after camelize)
+            LOGGER.warn(name + " (reserved word) cannot be used as model name. Renamed to " + camelize("model_" + name));
+            name = "model_" + name; // e.g. return => ModelReturn (after camelize)
         }
 
         // add prefix and/or suffic only if name does not start wth \ (e.g. \DateTime)

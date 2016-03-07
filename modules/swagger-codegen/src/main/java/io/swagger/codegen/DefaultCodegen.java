@@ -877,6 +877,7 @@ public class DefaultCodegen {
         m.unescapedDescription = model.getDescription();
         m.classname = toModelName(name);
         m.classVarName = toVarName(name);
+        m.classFilename = toModelFilename(name);
         m.modelJson = Json.pretty(model);
         m.externalDocs = model.getExternalDocs();
         m.vendorExtensions = model.getVendorExtensions();
@@ -1235,7 +1236,12 @@ public class DefaultCodegen {
         }
     }
 
-    private static Response findMethodResponse(Map<String, Response> responses) {
+    /**
+     * Override with any special handling of response codes
+     * @param responses Swagger Operation's responses
+     * @return default method response or <tt>null</tt> if not found
+     */
+    protected Response findMethodResponse(Map<String, Response> responses) {
 
         String code = null;
         for (String responseCode : responses.keySet()) {
