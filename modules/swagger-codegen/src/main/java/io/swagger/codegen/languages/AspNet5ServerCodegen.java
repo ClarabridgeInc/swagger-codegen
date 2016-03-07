@@ -116,6 +116,10 @@ public class AspNet5ServerCodegen extends AbstractCSharpCodegen {
         if (operation.path != null) {
             String original = operation.path;
             operation.path = operation.path.replace("?", "/");
+            // remove leading "/" that breaks routing
+            if(operation.path.startsWith("/")) {
+                operation.path = operation.path.substring(1);
+            }
             if (!original.equals(operation.path)) {
                 LOGGER.warn("Normalized " + original + " to " + operation.path + ". Please verify generated source.");
             }

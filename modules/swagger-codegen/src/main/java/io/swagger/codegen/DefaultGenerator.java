@@ -291,7 +291,6 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
                     List<CodegenOperation> ops = paths.get(tag);
                     Map<String, Object> operation = processOperations(config, tag, ops);
 
-                    operation.put("pathWithoutLeadingSeparator", "FOOBAR" + operation.get("path"));
                     operation.put("basePath", basePath);
                     operation.put("basePathWithoutHost", basePathWithoutHost);
                     operation.put("contextPath", contextPath);
